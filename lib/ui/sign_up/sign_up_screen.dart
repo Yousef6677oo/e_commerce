@@ -1,11 +1,11 @@
-import 'package:e_commerce/ui/sign_up/sign_up_view_model.dart';
+import 'package:e_commerce/ui/sign_up/sign_up_viewModel.dart';
 import 'package:e_commerce/utilities/dialog_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../components/custom_authentication_text_field.dart';
-import '../../components/custom_elevated_button.dart';
+import '../../components/custom_authentication_textField.dart';
+import '../../components/custom_elevatedButton.dart';
 import '../../provider/authentication_provider.dart';
 import '../../utilities/validation_utils.dart';
 import '../home/home_screen.dart';

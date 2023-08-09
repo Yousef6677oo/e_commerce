@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../components/custom_authentication_text_field.dart';
-import '../../components/custom_elevated_button.dart';
+import '../../components/custom_authentication_textField.dart';
+import '../../components/custom_elevatedButton.dart';
 import '../../utilities/dialog_utils.dart';
 import '../../utilities/validation_utils.dart';
 import '../sign_in/sign_in_screen.dart';
-import 'forgot_password_view_model.dart';
+import 'forgot_password_viewModel.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   static const String routeName = 'forgot_password_screen';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../components/custom_account_text_field.dart';
+import '../../components/custom_account_textField.dart';
 
 class AccountScreen extends StatelessWidget {
   static const String routeName = 'account_screen';

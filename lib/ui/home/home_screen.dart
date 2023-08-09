@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../components/custom_icon_navigation_bar.dart';
-import '../../components/custom_search_bar.dart';
+import '../../components/custom_icon_navigationBar.dart';
+import '../../components/custom_searchBar.dart';
 import '../account/account_screen.dart';
 
 class HomeScreen extends StatefulWidget {
