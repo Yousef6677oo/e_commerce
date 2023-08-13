@@ -1,19 +1,41 @@
-import 'package:e_commerce/api/api_manager.dart';
-import 'package:e_commerce/api/response/authentication_response/AuthenticationResponse.dart';
+import 'package:e_commerce/data/dataSource/authentication_online_dataSource.dart';
+import 'package:e_commerce/data/repository/authentication_repository.dart';
+import 'package:e_commerce/domain/dataSource/authentication_online_dataSource.dart';
+import 'package:e_commerce/domain/model/AuthenticationResultDto.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../data/api/api_manager.dart';
+import '../../domain/repository/authentication_repository.dart';
+import '../../domain/useCase/sign_in_useCase.dart';
 
 class SignInViewModel extends Cubit<SignInViewState> {
-  SignInViewModel() : super(InitialState());
-  ApiManager apiManager = ApiManager();
+  late ApiManager apiManager;
+  late AuthenticationOnlineDataSource onlineDataSource;
+  late AuthenticationRepository authenticationRepository;
+  late SignInUseCase signInUseCase;
+
+  SignInViewModel() : super(InitialState()) {
+    apiManager = ApiManager();
+    onlineDataSource = AuthenticationOnlineDataSourceImplementation(apiManager);
+    authenticationRepository =
+        AuthenticationRepositoryImplementation(onlineDataSource);
+    signInUseCase = SignInUseCase(authenticationRepository);
+  }
+
+  //todo: high dependence
 
   signIn(String userName, String password) async {
     emit(LoadingState(loadingMessage: "Loading..."));
     try {
-      var response = await apiManager.signIn(userName, password);
-      if (!response.isSuccess()) {
-        emit(FailState(failMessage: response.getErrorMessages()));
-        return;
-      }
+      var response = await signInUseCase.invoke(userName, password);
+      // if (!response.isSuccess()) {
+      //   emit(FailState(failMessage: response.getErrorMessage()));
+      //   return;
+      // }
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('name', response.user?.name ?? '');
+      await prefs.setString('email', response.user?.email ?? '');
       emit(SuccessState(response));
     } catch (exception) {
       emit(FailState(failMessage: exception.toString()));
@@ -32,7 +54,7 @@ class LoadingState extends SignInViewState {
 }
 
 class SuccessState extends SignInViewState {
-  AuthenticationResponse response;
+  AuthenticationResultDto response;
 
   SuccessState(this.response);
 }

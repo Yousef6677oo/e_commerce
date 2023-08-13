@@ -1,5 +1,7 @@
-import 'package:e_commerce/ui/categories/categories_screen.dart';
-import 'package:e_commerce/ui/wishlist/wishlist_screen.dart';
+import 'package:e_commerce/ui/home/tabs/account_tab/account_tab.dart';
+import 'package:e_commerce/ui/home/tabs/categories_tab/categories_tab.dart';
+import 'package:e_commerce/ui/home/tabs/home_tab/home_tab.dart';
+import 'package:e_commerce/ui/home/tabs/wishlist_tab/wishlist_tab.dart';
 import 'package:e_commerce/utilities/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
@@ -7,7 +9,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../components/custom_icon_navigationBar.dart';
 import '../../components/custom_searchBar.dart';
-import '../account/account_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "home_screen";
@@ -18,12 +19,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
+  List<Widget> listTabs = [
+    HomeTab(),
+    CategoriesTab(),
+    WishlistTab(),
+    AccountTab(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.accentColor,
-      body: returnSelectedTab(),
+      body: listTabs[currentIndex],
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(15.0)),
         child: BottomNavigationBar(
@@ -70,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget homeScreen(){
+  Widget homeScreen() {
     return Column(
       children: [
         SizedBox(height: MediaQuery.of(context).size.height * 0.06),
@@ -110,17 +117,5 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
     );
-  }
-
-  Widget returnSelectedTab(){
-    if(currentIndex==0){
-      return homeScreen();
-    }else if(currentIndex == 1){
-      return CategoriesScreen();
-    }else if(currentIndex == 2){
-      return WishlistScreen();
-    }else{
-      return AccountScreen();
-    }
   }
 }

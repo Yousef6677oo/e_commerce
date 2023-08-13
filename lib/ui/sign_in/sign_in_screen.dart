@@ -14,8 +14,10 @@ import '../sign_up/sign_up_screen.dart';
 
 class SignInScreen extends StatelessWidget {
   static const String routeName = "sign_in_screen";
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController userNameController =
+      TextEditingController(text: 'yousef01026283799@gmail.com');
+  TextEditingController passwordController =
+      TextEditingController(text: 'yousefahmedkamel137');
 
   final _formKey = GlobalKey<FormState>();
   var viewModel = SignInViewModel();

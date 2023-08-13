@@ -35,7 +35,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         }
         if (current is SuccessEmailState ||
             current is SuccessResetCodeState ||
-            current is SuccessResetPasswordState||
+            current is SuccessResetPasswordState ||
             current is FailState ||
             current is LoadingState) {
           return true;

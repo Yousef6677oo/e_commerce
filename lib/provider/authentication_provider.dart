@@ -1,20 +1,24 @@
-import 'package:e_commerce/api/common/User.dart';
+import 'package:e_commerce/domain/model/UserDto.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticationProvider extends Cubit<CurrentUserState> {
-  late User user;
+  UserDto user;
+  bool isLogged;
 
-  AuthenticationProvider() : super(LoggedOutState()) {
-    //todo: will read data from shared preferences
-  }
+  AuthenticationProvider({required this.isLogged, required this.user})
+      : super(LoggedOutState());
 
   bool isUserLoggedIn() {
     return state is LoggedInState;
   }
 
-  void login(LoggedInState loggedInState) {
+  Future<void> login(LoggedInState loggedInState) async {
     emit(loggedInState);
     user = loggedInState.user;
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isLogged', true);
   }
 
   void logout(LoggedOutState loggedInState) {
@@ -25,7 +29,7 @@ class AuthenticationProvider extends Cubit<CurrentUserState> {
 abstract class CurrentUserState {}
 
 class LoggedInState extends CurrentUserState {
-  User user;
+  UserDto user;
   String token;
 
   LoggedInState({required this.user, required this.token});

@@ -1,8 +1,17 @@
-import '../../api/response/authentication_response/AuthenticationResponse.dart';
+import '../model/AuthenticationResultDto.dart';
+import '../model/ForgotPasswordDto.dart';
+import '../model/ResetPasswordDto.dart';
+import '../model/VerifyResetCodeDto.dart';
 
-abstract class AuthenticationOnlineDataSource{
-  Future<AuthenticationResponse> signIn(String userName, String password);
+abstract class AuthenticationOnlineDataSource {
+  Future<AuthenticationResultDto> signIn(String userName, String password);
 
-  Future<AuthenticationResponse> signUp(String fullName, String mobileNumber,
+  Future<AuthenticationResultDto> signUp(String fullName, String mobileNumber,
       String emailAddress, String password);
+
+  Future<ForgotPasswordDto> forgotPassword(String email);
+
+  Future<VerifyResetCodeDto> verifyResetCode(String resetCode);
+
+  Future<ResetPasswordDto> resetPassword(String email, String newPassword);
 }
