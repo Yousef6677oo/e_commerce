@@ -75,13 +75,19 @@ class ApiManager {
     return resetPasswordResponse.toResetPasswordDto();
   }
 
-  Future<GetAllCategoriesDto> getAllCategories() async {
-    var uri = Uri.https(baseUrl, 'api/v1/categories');
+  Future<GetAllCategoriesDto> getAllCategories([String? id]) async {
+    late var uri = Uri.https(baseUrl, 'api/v1/categories');
     var response = await client.get(uri);
     var getAllCategoriesResponse =
-        GetAllCategoriesResponse.fromJson(jsonDecode(response.body));
+    GetAllCategoriesResponse.fromJson(jsonDecode(response.body));
     return getAllCategoriesResponse.toGetAllCategoriesDto();
   }
+  // late var uri;
+  // if (id != null && id!.isNotEmpty) {
+  //   uri = Uri.https(baseUrl, 'api/v1/categories/$id');
+  // } else {
+  //   uri = Uri.https(baseUrl, 'api/v1/categories');
+  // }
 
   Future<GetAllSubCategoriesDto> getAllSubCategories([String? id]) async {
     late var uri;

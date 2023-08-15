@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../components/custom_searchBar.dart';
+import '../../../cart/cart_screen.dart';
 
 class WishlistTab extends StatelessWidget {
   @override
@@ -24,7 +25,11 @@ class WishlistTab extends StatelessWidget {
             Expanded(flex: 8, child: CustomSearchBar()),
             Expanded(
                 flex: 2,
-                child: SvgPicture.asset("assets/shopping_cart_icon.svg"))
+                child: GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, CartScreen.routeName);
+                    },
+                    child: SvgPicture.asset("assets/shopping_cart_icon.svg")))
           ],
         ),
       ],

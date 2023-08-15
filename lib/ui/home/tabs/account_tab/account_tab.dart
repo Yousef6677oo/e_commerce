@@ -14,7 +14,7 @@ class AccountTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AuthenticationProvider provider = BlocProvider.of(context);
-
+    print("token: ${provider.token}");
     fullNameController = TextEditingController(text: provider.user.name);
     emailController = TextEditingController(text: provider.user.email);
     double height = MediaQuery.of(context).size.height;

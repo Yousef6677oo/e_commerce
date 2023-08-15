@@ -10,7 +10,7 @@ class GetAllCategoriesRepositoryImplementation
   GetAllCategoriesRepositoryImplementation(this.onlineDataSource);
 
   @override
-  Future<GetAllCategoriesDto> getAllCategories() {
+  Future<GetAllCategoriesDto> getAllCategories([String? id]) {
     return onlineDataSource.getAllCategories();
   }
 }

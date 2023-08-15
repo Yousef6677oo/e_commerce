@@ -4,11 +4,9 @@ import 'package:e_commerce/ui/home/tabs/home_tab/home_tab.dart';
 import 'package:e_commerce/ui/home/tabs/wishlist_tab/wishlist_tab.dart';
 import 'package:e_commerce/utilities/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../components/custom_icon_navigationBar.dart';
-import '../../components/custom_searchBar.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "home_screen";
@@ -74,48 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget homeScreen() {
-    return Column(
-      children: [
-        SizedBox(height: MediaQuery.of(context).size.height * 0.06),
-        Row(
-          children: [
-            const SizedBox(
-              width: 10,
-            ),
-            SvgPicture.asset("assets/route_leading_icon.svg")
-          ],
-        ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-        Row(
-          children: [
-            const SizedBox(width: 15),
-            Expanded(flex: 8, child: CustomSearchBar()),
-            Expanded(
-                flex: 2,
-                child: SvgPicture.asset("assets/shopping_cart_icon.svg"))
-          ],
-        ),
-        Center(
-          child: ImageSlideshow(
-            width: MediaQuery.of(context).size.width * 0.90,
-            height: MediaQuery.of(context).size.height * 0.25,
-            initialPage: 0,
-            indicatorColor: Colors.transparent,
-            indicatorBackgroundColor: Colors.transparent,
-            autoPlayInterval: 5000,
-            isLoop: true,
-            children: [
-              Image.asset("assets/image_slide_show_1.png"),
-              Image.asset("assets/image_slide_show_2.png"),
-              Image.asset("assets/image_slide_show_3.png"),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

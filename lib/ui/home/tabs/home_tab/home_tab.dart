@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../components/custom_category.dart';
 import '../../../../components/custom_searchBar.dart';
+import '../../../cart/cart_screen.dart';
 import 'home_view_model.dart';
 
 class HomeTab extends StatelessWidget {
@@ -67,9 +68,14 @@ class HomeTab extends StatelessWidget {
                 Expanded(flex: 8, child: CustomSearchBar()),
                 Expanded(
                     flex: 2,
-                    child: SvgPicture.asset("assets/shopping_cart_icon.svg"))
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.pushNamed(context, CartScreen.routeName);
+                      },
+                        child: SvgPicture.asset("assets/shopping_cart_icon.svg")))
               ],
             ),
+            SizedBox(height: MediaQuery.of(context).size.height*0.01,),
             Center(
               child: ImageSlideshow(
                 width: MediaQuery.of(context).size.width * 0.90,

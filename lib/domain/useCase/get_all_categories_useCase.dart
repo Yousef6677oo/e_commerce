@@ -7,7 +7,7 @@ class GetAllCategoriesUseCase {
 
   GetAllCategoriesUseCase(this.getAllCategoriesRepository);
 
-  Future<GetAllCategoriesDto> invoke() async {
+  Future<GetAllCategoriesDto> invoke([String? id]) async {
     return await getAllCategoriesRepository.getAllCategories();
   }
 }

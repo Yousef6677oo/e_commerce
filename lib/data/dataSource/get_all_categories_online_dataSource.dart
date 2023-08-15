@@ -10,7 +10,7 @@ class GetAllCategoriesOnlineDataSourceImplementation
   GetAllCategoriesOnlineDataSourceImplementation(this.apiManager);
 
   @override
-  Future<GetAllCategoriesDto> getAllCategories() {
-    return apiManager.getAllCategories();
+  Future<GetAllCategoriesDto> getAllCategories([String? id]) {
+      return apiManager.getAllCategories(id);
   }
 }

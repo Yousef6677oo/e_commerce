@@ -19,13 +19,14 @@ main() async {
   bool isLogged = prefs.getBool('isLogged') ?? false;
   String name = prefs.getString('name') ?? '';
   String email = prefs.getString('email') ?? '';
+  String token = prefs.getString('token') ?? '';
   ApiManager apiManager = ApiManager();
   apiManager.getAllSubCategories();
   runApp(BlocProvider(
       lazy: true,
       create: (BuildContext context) {
         return AuthenticationProvider(
-            isLogged: isLogged, user: UserDto(name: name, email: email));
+            isLogged: isLogged, user: UserDto(name: name, email: email),token: token);
       },
       child: MyApp(isLogged)));
 }

@@ -5,6 +5,7 @@ class SubCategoriesData {
     this.id,
     this.name,
     this.slug,
+    this.image,
     this.category,
     this.createdAt,
     this.updatedAt,
@@ -14,6 +15,7 @@ class SubCategoriesData {
     id = json['_id'];
     name = json['name'];
     slug = json['slug'];
+    image = json['image'];
     category = json['category'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
@@ -22,6 +24,7 @@ class SubCategoriesData {
   String? id;
   String? name;
   String? slug;
+  String? image;
   String? category;
   String? createdAt;
   String? updatedAt;
@@ -31,6 +34,7 @@ class SubCategoriesData {
     map['_id'] = id;
     map['name'] = name;
     map['slug'] = slug;
+    map['image'] = image;
     map['category'] = category;
     map['createdAt'] = createdAt;
     map['updatedAt'] = updatedAt;
@@ -42,6 +46,7 @@ class SubCategoriesData {
         id: id,
         name: name,
         slug: slug,
+        image: image,
         category: category,
         createdAt: createdAt,
         updatedAt: updatedAt);

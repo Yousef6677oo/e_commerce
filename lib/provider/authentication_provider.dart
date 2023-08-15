@@ -4,9 +4,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticationProvider extends Cubit<CurrentUserState> {
   UserDto user;
+  String token;
   bool isLogged;
 
-  AuthenticationProvider({required this.isLogged, required this.user})
+  AuthenticationProvider({required this.isLogged, required this.user,required this.token})
       : super(LoggedOutState());
 
   bool isUserLoggedIn() {

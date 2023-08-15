@@ -36,6 +36,7 @@ class SignInViewModel extends Cubit<SignInViewState> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('name', response.user?.name ?? '');
       await prefs.setString('email', response.user?.email ?? '');
+      await prefs.setString('token', response.token ?? '');
       emit(SuccessState(response));
     } catch (exception) {
       emit(FailState(failMessage: exception.toString()));
